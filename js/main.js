@@ -51,10 +51,25 @@ function shuffle (array) {
 //Deal card to player
 
 $('.pull').on('click', addCardToPlayer);
-var playerHand = $('#playerHand')
+var playerTurn = 1;
 
 function addCardToPlayer() {
     var cardPulled = deck1.pop()
-    var image = '<img src="images/' + cardPulled.face + '.png" />'
-    $('#playerHand').html(image)
+    var image = '<img src="images/' + cardPulled.face + '.png" />';
+    if (playerTurn) {
+    $('#playerHand').html(image);
+    } else {
+    $('#dealerHand').html(image); 
+    }
+}
+
+// Stand
+$('.stand').on('click', stand);
+
+function stand() {
+    if (playerTurn) {
+        playerTurn = 0;
+    } else {
+        playerTurn = 1;
+    }
 }

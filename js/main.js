@@ -89,8 +89,15 @@ $('.hit').on('click', addCardToPlayer);
 
 function displayHand(playerInput) {
     var imageStr = '';
-    for (var i = 0; i < playerInput.hand.length; i ++) {
-        imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
+    if(playerInput === dealer) {
+        imageStr = '<img src="images/red_back.png" />';
+        for (var i = 1; i < playerInput.hand.length; i ++) {
+            imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
+        }
+    } else {
+        for (var i = 0; i < playerInput.hand.length; i ++) {
+            imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
+        }
     }
     return imageStr;
 }
@@ -98,17 +105,15 @@ function displayHand(playerInput) {
 function addCardToPlayer() {
     
     var cardPulled = deck1.pop()
-    // player.hand.push(cardPulled);
-    //var image = '<img src="images/' + cardPulled.face + '.png" />';
-    if (playerTurn) {
     
-    player.hand.push(cardPulled);
-    var handImages = displayHand(player);
-    $('#playerHand').html(handImages);
+    if (playerTurn) {
+        player.hand.push(cardPulled);
+        var handImages = displayHand(player);
+        $('#playerHand').html(handImages);
     } else {
-    dealer.hand.push(cardPulled);
-    var handImages = displayHand(dealer);
-    $('#dealerHand').html(handImages); 
+        dealer.hand.push(cardPulled);
+        var handImages = displayHand(dealer);
+        $('#dealerHand').html(handImages); 
     }
 }
 
@@ -128,3 +133,19 @@ function stand() {
     }
 }
 
+// Deal
+
+$('.deal').on('click', dealCards);
+
+function dealCards() {
+    $('.deal').hide();
+    shuffle(deck1);
+    addCardToPlayer(); //deal player
+    playerTurn = 0;
+    addCardToPlayer(); //deal dealer
+    playerTurn = 1;
+    addCardToPlayer(); // deal player
+    playerTurn = 0;
+    addCardToPlayer(); // deal dealer
+    playerTurn = 1;
+}

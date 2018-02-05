@@ -56,7 +56,7 @@ function shuffleDeck() {
 
 //Deal card to player
 
-$('.pull').on('click', addCardToPlayer);
+$('.hit').on('click', addCardToPlayer);
 var playerTurn = 1;
 
 function addCardToPlayer() {

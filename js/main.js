@@ -47,3 +47,16 @@ function shuffle (array) {
       array[j] = temp
     }
 };
+
+//Deal card to player
+// function dealCard() {
+
+// }
+$('.pull').on('click', addCardToPlayer);
+var playerHand = $('#playerHand')
+
+function addCardToPlayer() {
+    var cardPulled = deck1.pop()
+    var image = '<img src="images/' + cardPulled.face + '.jpg" />'
+    $('#playerHand').html(image)
+}

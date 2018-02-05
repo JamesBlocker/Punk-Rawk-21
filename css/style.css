@@ -5,3 +5,7 @@ body{
 img {
     width: 100px;
 }
+
+#dealer div{
+    display: inline-block;
+}

@@ -3,9 +3,16 @@ body{
 }
 
 img {
-    width: 100px;
+    height: 150px;
 }
 
 #dealer div{
     display: inline-block;
+    vertical-align: top;
+}
+
+.cardPlaceHolder {
+    border: 1px dashed green;
+    height: 150px;
+    width: 100px;
 }

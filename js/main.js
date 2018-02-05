@@ -49,9 +49,7 @@ function shuffle (array) {
 };
 
 //Deal card to player
-// function dealCard() {
 
-// }
 $('.pull').on('click', addCardToPlayer);
 var playerHand = $('#playerHand')
 

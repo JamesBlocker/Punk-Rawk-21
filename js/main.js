@@ -48,6 +48,12 @@ function shuffle (array) {
     }
 };
 
+//shuffle
+$('.shuffle').on('click', shuffleDeck);
+function shuffleDeck() {
+    shuffle(deck1);
+};
+
 //Deal card to player
 
 $('.pull').on('click', addCardToPlayer);
@@ -73,3 +79,4 @@ function stand() {
         playerTurn = 1;
     }
 }
+

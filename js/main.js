@@ -1,4 +1,7 @@
-
+var player = {
+    hand: [],
+    score: 0
+};
 
 // basic card structure
 function card(value, name, suit) {
@@ -16,7 +19,13 @@ function deck() {
 
     for (var i = 0; i < this.suits.length; i++) {
         for (var j = 0; j < this.names.length; j++) {
-            cards.push(new card(j + 1, this.names[j], this.suits[i]));
+            var val = j + 1;
+            if (val > 10) {
+                val = 10;
+            } else if (val === 1) {
+                val = 11;
+            }
+            cards.push(new card(val, this.names[j], this.suits[i]));
         }
     }
 
@@ -60,7 +69,9 @@ $('.hit').on('click', addCardToPlayer);
 var playerTurn = 1;
 
 function addCardToPlayer() {
+    
     var cardPulled = deck1.pop()
+    player.hand.push(cardPulled);
     var image = '<img src="images/' + cardPulled.face + '.png" />';
     if (playerTurn) {
     $('#playerHand').html(image);

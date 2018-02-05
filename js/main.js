@@ -87,17 +87,28 @@ function shuffleDeck() {
 
 $('.hit').on('click', addCardToPlayer);
 
+function displayHand(playerInput) {
+    var imageStr = '';
+    for (var i = 0; i < playerInput.hand.length; i ++) {
+        imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
+    }
+    return imageStr;
+}
+
 function addCardToPlayer() {
     
     var cardPulled = deck1.pop()
     // player.hand.push(cardPulled);
-    var image = '<img src="images/' + cardPulled.face + '.png" />';
+    //var image = '<img src="images/' + cardPulled.face + '.png" />';
     if (playerTurn) {
-    $('#playerHand').html(image);
+    
     player.hand.push(cardPulled);
+    var handImages = displayHand(player);
+    $('#playerHand').html(handImages);
     } else {
-    $('#dealerHand').html(image); 
     dealer.hand.push(cardPulled);
+    var handImages = displayHand(dealer);
+    $('#dealerHand').html(handImages); 
     }
 }
 

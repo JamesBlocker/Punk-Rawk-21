@@ -1,7 +1,26 @@
+// player
+var playerTurn = 1;
+
 var player = {
     hand: [],
     score: 0
 };
+
+//dealer
+var dealer = {
+    hand: [],
+    score: 0
+};
+
+// get score
+function getScore(playerInput) {
+    var tempScore = 0;
+    for (var i = 0; i < playerInput.hand.length; i++) {
+        tempScore += playerInput.hand[i].value;
+    }
+    console.log("temp: " + tempScore);
+    return tempScore;
+}
 
 // basic card structure
 function card(value, name, suit) {
@@ -20,6 +39,7 @@ function deck() {
     for (var i = 0; i < this.suits.length; i++) {
         for (var j = 0; j < this.names.length; j++) {
             var val = j + 1;
+            // if card is JQKA set value
             if (val > 10) {
                 val = 10;
             } else if (val === 1) {
@@ -66,17 +86,18 @@ function shuffleDeck() {
 //Deal card to player
 
 $('.hit').on('click', addCardToPlayer);
-var playerTurn = 1;
 
 function addCardToPlayer() {
     
     var cardPulled = deck1.pop()
-    player.hand.push(cardPulled);
+    // player.hand.push(cardPulled);
     var image = '<img src="images/' + cardPulled.face + '.png" />';
     if (playerTurn) {
     $('#playerHand').html(image);
+    player.hand.push(cardPulled);
     } else {
     $('#dealerHand').html(image); 
+    dealer.hand.push(cardPulled);
     }
 }
 
@@ -86,8 +107,13 @@ $('.stand').on('click', stand);
 function stand() {
     if (playerTurn) {
         playerTurn = 0;
+        
+        player.score = getScore(player);
+        console.log("player: " + player.score);
     } else {
         playerTurn = 1;
+        dealer.score = getScore(dealer);
+        console.log("dealer: " + dealer.score);
     }
 }
 

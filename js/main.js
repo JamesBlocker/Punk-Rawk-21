@@ -171,13 +171,27 @@ function dealCards() {
     $('.stand').show();
     $('.deal').hide();
     shuffle(deck1);
-    addCardToPlayer(); //deal player
+    addCardToPlayer(); //dealer
     player1Turn = 1;
-    addCardToPlayer(); //deal dealer
+    addCardToPlayer(); //p1
     player1Turn = 0;
-    addCardToPlayer(); // deal player
+    player2Turn = 1;
+    addCardToPlayer(); //p2
+    player2Turn = 0;
+    addCardToPlayer() //dealer
     player1Turn = 1;
-    addCardToPlayer(); // deal dealer
+    addCardToPlayer(); //p1
+    player1Turn = 0;
+    player2Turn = 1;
+    addCardToPlayer(); //p2
+    
+    
+    
+    // addCardToPlayer();
+    // player1Turn = 0;
+    // addCardToPlayer(); 
+    // player1Turn = 1;
+    // addCardToPlayer(); 
 }
 
 function dealerTurn() {

@@ -112,7 +112,7 @@ function addCardToPlayer() {
     if (player1Turn) {
         player1.hand.push(cardPulled);
         var handImages = displayHand(player1);
-        $('#playerHand').html(handImages);
+        $('#player1Hand').html(handImages);
         var newScore = getScore(player1);
         if (newScore > 21) {
             alert('BUST');

@@ -3,9 +3,9 @@ $('.hit').hide();
 $('.stand').hide();
 
 // player
-var playerTurn = 0;
+var player1Turn = 0;
 
-var player = {
+var player1 = {
     hand: [],
     score: 0
 };
@@ -109,11 +109,11 @@ function displayHand(playerInput) {
 function addCardToPlayer() {
     var cardPulled = deck1.pop()
     
-    if (playerTurn) {
-        player.hand.push(cardPulled);
-        var handImages = displayHand(player);
+    if (player1Turn) {
+        player1.hand.push(cardPulled);
+        var handImages = displayHand(player1);
         $('#playerHand').html(handImages);
-        var newScore = getScore(player);
+        var newScore = getScore(player1);
         if (newScore > 21) {
             alert('BUST');
         }
@@ -121,7 +121,7 @@ function addCardToPlayer() {
         dealer.hand.push(cardPulled);
         var handImages = displayHand(dealer);
         $('#dealerHand').html(handImages); 
-        var newScore = getScore(player);
+        var newScore = getScore(player1);
         if (newScore > 21) {
             alert('BUST');
         }
@@ -132,10 +132,10 @@ function addCardToPlayer() {
 $('.stand').on('click', stand);
 
 function stand() {
-    if (playerTurn) {
-        playerTurn = 0; 
-        player.score = getScore(player);
-        console.log("player: " + player.score);
+    if (player1Turn) {
+        player1Turn = 0; 
+        player1.score = getScore(player1);
+        console.log("player 1: " + player1.score);
         console.log('dealers turn');
         dealerTurn();
     }
@@ -151,11 +151,11 @@ function dealCards() {
     $('.deal').hide();
     shuffle(deck1);
     addCardToPlayer(); //deal player
-    playerTurn = 1;
+    player1Turn = 1;
     addCardToPlayer(); //deal dealer
-    playerTurn = 0;
+    player1Turn = 0;
     addCardToPlayer(); // deal player
-    playerTurn = 1;
+    player1Turn = 1;
     addCardToPlayer(); // deal dealer
 }
 

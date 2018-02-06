@@ -121,6 +121,8 @@ function addCardToPlayer() {
         var newScore = getScore(player1);
         if (newScore > 21) {
             alert('Player 1 BUST');
+            player1Turn = 0;
+            player2Turn = 1;
         }
     } else if (player2Turn){
         player2.hand.push(cardPulled);
@@ -129,6 +131,8 @@ function addCardToPlayer() {
         var newScore = getScore(player2);
         if (newScore > 21) {
             alert('Player 2 BUST');
+            player2Turn = 0;
+            dealerTurn();
         }
     } else {
         dealer.hand.push(cardPulled);
@@ -151,7 +155,6 @@ function stand() {
         console.log("player 1: " + player1.score);
         console.log('player 2 turn');
         player2Turn = 1;
-        // dealerTurn();
     } else if (player2Turn) {
         player2Turn = 0; 
         player2.score = getScore(player2);
@@ -184,6 +187,8 @@ function dealCards() {
     player1Turn = 0;
     player2Turn = 1;
     addCardToPlayer(); //p2
+    player1Turn = 1;
+    player2Turn = 0;
     
     
     

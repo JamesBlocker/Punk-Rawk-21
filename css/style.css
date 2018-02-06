@@ -2,25 +2,58 @@ body{
     background-color: aqua;
 }
 
+#game{
+    min-width: 500px;
+}
+
 img {
     height: 150px;
 }
 
-#dealer div{
-    display: inline-block;
-    vertical-align: top;
+.row {
+    width: 100%;
 }
 
+#dealer {
+    width: 500px;
+    margin: 20px auto;
+}
+
+div h3{
+    /* width: 100px;
+    margin: 0 auto; */
+    text-align: center;
+}
+
+/* #dealer div{
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 50px;
+} */
+
 .cardPlaceHolder {
+    width: 100px;
+    margin: 0 auto;
     border: 1px dashed green;
     height: 150px;
-    width: 100px;
+   
     /* display: inline-block;
     float: left; */
 }
 
-#dealerHand {
+/* #dealerHand {
     margin: 20px 50% 20px 50%;
+    width: 200px;
+    margin: 15px auto;
+} */
+
+/* #dealerHand img {
+    display: inline-block;
+} */
+
+#actionBar {
+    margin: 20px auto;
+    width: 120px;
 }
 
 /* #dealerHand {

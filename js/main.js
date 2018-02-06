@@ -229,7 +229,7 @@ function checkWin(player) {
     console.log('deal' + dealScore);
     if (playScore === dealScore && dealScore <= 21) {
         alert(player.name + " pushes");
-    } else if (playScore > dealScore && playScore >= 21) {
+    } else if (playScore > dealScore && playScore <= 21) {
         alert(player.name + " wins!");
     } else if (dealScore > 21 && playScore <= 21) {
         alert(player.name + " wins!");        

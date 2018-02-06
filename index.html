@@ -13,27 +13,39 @@
     <div class="container">
        
         <div id="game">
-            <div id="dealer">
-                <div id="dealerHand">
-                        <div class="cardPlaceHolder"></div>
+            <div class="row">
+                <div id="dealer">
+                    <div id="dealerHand">
+                            <div class="cardPlaceHolder"></div>
+                    </div>
+                    <!-- <div id="drawDeck">
+                        <img src="images/Red_back.png" alt="">
+                    </div> -->
                 </div>
-                <!-- <div id="drawDeck">
-                    <img src="images/Red_back.png" alt="">
-                </div> -->
             </div>
         
-            <div id="player">
-                <div id="playerHand">
-                    <div class="cardPlaceHolder"></div>
+            <div class="row">
+                <div id="player">
+                    <div class="col-6">
+                        <div id="player1Hand">
+                            <div class="cardPlaceHolder"></div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="player2hand">
+                            <div class="cardPlaceHolder"></div>
+                        </div>
+                    </div>    
                 </div>
             </div>
-            <div id="actionBar">
-                <button type="button" class="btn btn-success deal">Deal</button>
-                <button type="button" class="btn btn-warning hit">Hit</button>
-                <button type="button" class="btn btn-danger stand">Stand</button>
-                <button type="button" class="btn btn-default shuffle">SHUFFLE</button>
-                
-                
+            <br>
+            <div class="row">
+                <div id="actionBar">
+                    <button type="button" class="btn btn-success deal">Deal</button>
+                    <button type="button" class="btn btn-warning hit">Hit</button>
+                    <button type="button" class="btn btn-danger stand">Stand</button>
+                    <!-- <button type="button" class="btn btn-default shuffle">SHUFFLE</button> -->  
+                </div>
             </div>
         </div>
     </div>

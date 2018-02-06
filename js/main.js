@@ -2,10 +2,15 @@
 $('.hit').hide();
 $('.stand').hide();
 
-// player
+// players
 var player1Turn = 0;
-
 var player1 = {
+    hand: [],
+    score: 0
+};
+
+var player2Turn = 0;
+var player2 = {
     hand: [],
     score: 0
 };
@@ -82,10 +87,10 @@ function shuffle (array) {
 };
 
 //shuffle
-$('.shuffle').on('click', shuffleDeck);
-function shuffleDeck() {
-    shuffle(deck1);
-};
+// $('.shuffle').on('click', shuffleDeck);
+// function shuffleDeck() {
+//     shuffle(deck1);
+// };
 
 // HIT - Deal card to player
 
@@ -115,7 +120,15 @@ function addCardToPlayer() {
         $('#player1Hand').html(handImages);
         var newScore = getScore(player1);
         if (newScore > 21) {
-            alert('BUST');
+            alert('Player 1 BUST');
+        }
+    } else if (player2Turn){
+        player2.hand.push(cardPulled);
+        var handImages = displayHand(player2);
+        $('#player2Hand').html(handImages);
+        var newScore = getScore(player2);
+        if (newScore > 21) {
+            alert('Player 2 BUST');
         }
     } else {
         dealer.hand.push(cardPulled);
@@ -136,8 +149,16 @@ function stand() {
         player1Turn = 0; 
         player1.score = getScore(player1);
         console.log("player 1: " + player1.score);
+        console.log('player 2 turn');
+        player2Turn = 1;
+        // dealerTurn();
+    } else if (player2Turn) {
+        player2Turn = 0; 
+        player2.score = getScore(player2);
+        console.log("player 1: " + player2.score);
         console.log('dealers turn');
         dealerTurn();
+
     }
 }
 

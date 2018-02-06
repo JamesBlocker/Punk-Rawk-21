@@ -1,5 +1,5 @@
 // player
-var playerTurn = 1;
+var playerTurn = 0;
 
 var player = {
     hand: [],
@@ -109,14 +109,18 @@ function addCardToPlayer() {
         player.hand.push(cardPulled);
         var handImages = displayHand(player);
         $('#playerHand').html(handImages);
-        // var datScore = getScore(player);
-        if (player.score > 21) {
+        var newScore = getScore(player);
+        if (newScore > 21) {
             alert('BUST');
         }
     } else {
         dealer.hand.push(cardPulled);
         var handImages = displayHand(dealer);
         $('#dealerHand').html(handImages); 
+        var newScore = getScore(player);
+        if (newScore > 21) {
+            alert('BUST');
+        }
     }
 }
 
@@ -128,11 +132,13 @@ function stand() {
         playerTurn = 0; 
         player.score = getScore(player);
         console.log("player: " + player.score);
-    } else {
-        playerTurn = 1;
-        dealer.score = getScore(dealer);
-        console.log("dealer: " + dealer.score);
-    }
+        console.log('dealers turn');
+        dealerTurn();
+    } //else {
+    //     dealer.score = getScore(dealer);
+    //     console.log("dealer: " + dealer.score);
+    //     dealerTurn();
+    // }
 }
 
 // Deal
@@ -143,11 +149,31 @@ function dealCards() {
     $('.deal').hide();
     shuffle(deck1);
     addCardToPlayer(); //deal player
-    playerTurn = 0;
+    playerTurn = 1;
     addCardToPlayer(); //deal dealer
-    playerTurn = 1;
-    addCardToPlayer(); // deal player
     playerTurn = 0;
-    addCardToPlayer(); // deal dealer
+    addCardToPlayer(); // deal player
     playerTurn = 1;
+    addCardToPlayer(); // deal dealer
+}
+
+function dealerTurn() {
+    console.log('taking dealer turn');
+    var tempDealScore = getScore(dealer);
+    var imageStr = '';
+    for (var i = 0; i < dealer.hand.length; i ++) {
+            imageStr += '<img src="images/' + dealer.hand[i].face + '.png" />'
+            $('#dealerHand').html(imageStr);
+        }
+    console.log("deal: " + tempDealScore);
+
+
+    if (tempDealScore <= 16) {
+        addCardToPlayer();
+        dealerTurn();
+    } else if (tempDealScore > 21) {
+        alert('dealer bust');
+    }else {
+        alert('working - dealer stays');
+    }
 }

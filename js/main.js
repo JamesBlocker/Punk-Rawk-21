@@ -2,6 +2,9 @@
 $('.hit').hide();
 $('.stand').hide();
 
+// deck 1
+var deck1 = deck();
+
 // players
 var player1Turn = 0;
 var player1 = {
@@ -59,13 +62,21 @@ function deck() {
             cards.push(new card(val, this.names[j], this.suits[i]));
         }
     }
-
     return cards;
 };
 
-// deck 1
-var deck1 = deck();
-
+// Ace score change
+// function aceScore(player) {
+//     if (player.score > 21) {
+//         for (var i = 0; i < player.hand.length; i++) {
+//             var onCard = player.hand[i];
+//             if (onCard.name.indexOf('A') === 0) {
+//                 player.score -= 10;
+//                 console.log('ACE FOUND and reduced');
+//             }
+//         }
+//     }
+// };
 
 // display deck
 function displayDeck(deck) {
@@ -88,14 +99,7 @@ function shuffle (array) {
     }
 };
 
-//shuffle
-// $('.shuffle').on('click', shuffleDeck);
-// function shuffleDeck() {
-//     shuffle(deck1);
-// };
-
 // HIT - Deal card to player
-
 $('.hit').on('click', addCardToPlayer);
 
 function displayHand(playerInput) {

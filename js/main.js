@@ -5,12 +5,14 @@ $('.stand').hide();
 // players
 var player1Turn = 0;
 var player1 = {
+    name: 'Johnny Rotten',
     hand: [],
     score: 0
 };
 
 var player2Turn = 0;
 var player2 = {
+    name: 'Sid Vicious',
     hand: [],
     score: 0
 };
@@ -189,14 +191,6 @@ function dealCards() {
     addCardToPlayer(); //p2
     player1Turn = 1;
     player2Turn = 0;
-    
-    
-    
-    // addCardToPlayer();
-    // player1Turn = 0;
-    // addCardToPlayer(); 
-    // player1Turn = 1;
-    // addCardToPlayer(); 
 }
 
 function dealerTurn() {
@@ -209,13 +203,33 @@ function dealerTurn() {
         }
     console.log("deal: " + tempDealScore);
 
-
     if (tempDealScore <= 16) {
         addCardToPlayer();
         dealerTurn();
     } else if (tempDealScore > 21) {
         alert('dealer bust');
+        checkWin(player1);
+        checkWin(player2);
     }else {
         alert('working - dealer stays');
+        checkWin(player1);
+        checkWin(player2);
+    }
+}
+
+function checkWin(player) {
+    var playScore = getScore(player);
+    console.log('-----------');
+    console.log('play' + playScore);
+    var dealScore = getScore(dealer);
+    console.log('deal' + dealScore);
+    if (playScore === dealScore && dealScore <= 21) {
+        alert(player.name + " pushes");
+    } else if (playScore > dealScore && playScore >= 21) {
+        alert(player.name + " wins!");
+    } else if (dealScore > 21 && playScore <= 21) {
+        alert(player.name + " wins!");        
+    } else {
+        alert(player.name + ' loses to the house this time');
     }
 }

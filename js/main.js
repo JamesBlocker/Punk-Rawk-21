@@ -1,3 +1,7 @@
+//starting conditions
+$('.hit').hide();
+$('.stand').hide();
+
 // player
 var playerTurn = 0;
 
@@ -134,11 +138,7 @@ function stand() {
         console.log("player: " + player.score);
         console.log('dealers turn');
         dealerTurn();
-    } //else {
-    //     dealer.score = getScore(dealer);
-    //     console.log("dealer: " + dealer.score);
-    //     dealerTurn();
-    // }
+    }
 }
 
 // Deal
@@ -146,6 +146,8 @@ function stand() {
 $('.deal').on('click', dealCards);
 
 function dealCards() {
+    $('.hit').show();
+    $('.stand').show();
     $('.deal').hide();
     shuffle(deck1);
     addCardToPlayer(); //deal player

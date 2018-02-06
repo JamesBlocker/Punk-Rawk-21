@@ -83,7 +83,7 @@ function shuffleDeck() {
     shuffle(deck1);
 };
 
-//Deal card to player
+// HIT - Deal card to player
 
 $('.hit').on('click', addCardToPlayer);
 
@@ -103,13 +103,16 @@ function displayHand(playerInput) {
 }
 
 function addCardToPlayer() {
-    
     var cardPulled = deck1.pop()
     
     if (playerTurn) {
         player.hand.push(cardPulled);
         var handImages = displayHand(player);
         $('#playerHand').html(handImages);
+        // var datScore = getScore(player);
+        if (player.score > 21) {
+            alert('BUST');
+        }
     } else {
         dealer.hand.push(cardPulled);
         var handImages = displayHand(dealer);
@@ -122,8 +125,7 @@ $('.stand').on('click', stand);
 
 function stand() {
     if (playerTurn) {
-        playerTurn = 0;
-        
+        playerTurn = 0; 
         player.score = getScore(player);
         console.log("player: " + player.score);
     } else {

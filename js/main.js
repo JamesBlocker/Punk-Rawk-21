@@ -68,19 +68,6 @@ function deck() {
     return cards;
 };
 
-// Ace score change
-// function aceScore(player) {
-//     if (player.score > 21) {
-//         for (var i = 0; i < player.hand.length; i++) {
-//             var onCard = player.hand[i];
-//             if (onCard.name.indexOf('A') === 0) {
-//                 player.score -= 10;
-//                 console.log('ACE FOUND and reduced');
-//             }
-//         }
-//     }
-// };
-
 // display deck
 function displayDeck(deck) {
     for (var i = 0; i < deck.length; i++) {
@@ -120,6 +107,7 @@ function displayHand(playerInput) {
     return imageStr;
 }
 
+// setup new hand
 function newHand(playerInput) {
     var imageStr = '';
     if(playerInput === dealer) {
@@ -179,7 +167,7 @@ function stand() {
         console.log("player 1: " + player1.score);
         console.log('player 2 turn');
         player2Turn = 1;
-        $('#turn').text("Player 2's turn");
+        $('#turn').text("Sid's turn");
         
     } else if (player2Turn) {
         player2Turn = 0; 
@@ -217,7 +205,7 @@ function dealCards() {
     addCardToPlayer(); //p2
     player1Turn = 1;
     player2Turn = 0;
-    $('#turn').text("Player 1's turn");
+    $('#turn').text("Johnny's turn");
 }
 
 // new round
@@ -237,6 +225,7 @@ function newRound() {
     dealer.hand = [];
     var handImages = newHand(dealer);
     $('#dealerHand').html(handImages);
+    
 }
 
 function dealerTurn() {
@@ -253,11 +242,11 @@ function dealerTurn() {
         addCardToPlayer();
         dealerTurn();
     } else if (tempDealScore > 21) {
-        alert('dealer bust');
+        alert('The dealer busts');
         checkWin(player1);
         checkWin(player2);
     }else {
-        alert('working - dealer stays');
+        alert('The dealer stays');
         checkWin(player1);
         checkWin(player2);
     }

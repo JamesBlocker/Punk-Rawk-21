@@ -1,3 +1,15 @@
+// opener
+$('#game').hide();
+$('#actionBar').hide();
+$('#startGame').on('click', startGame);
+
+function startGame() {
+    $('#opener').hide();
+    $('#game').show();
+    $('#actionBar').show();
+}
+
+
 //starting conditions
 $('.hit').hide();
 $('.stand').hide();

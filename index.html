@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BLACKJACK</title>
+    <link href="https://fonts.googleapis.com/css?family=Acme|Nanum+Brush+Script|Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     
@@ -12,6 +13,19 @@
 <body>
     <div class="container">
        
+        <div id="opener">
+            <h3>Johnny and Sid's</h3> 
+            <h1>Punk Rawk 21</h1>
+            <h2>Aces High and Hard</h2>
+            <p>Johnny and Sid don't count too good, in fact they can only count to 21. <br>Why should that stop them from losing at cards?!?</p>
+            <p>In this game you are dealt 2 cards and need to get as close to 21 without going over as possible. All cards take their face value but royalty is worth 10 (God Save The Queen!) and <strong>Ace's are ALWAYS 11</strong></p>
+            <p>Oi, that means you can lose a round right out of the gate... just like in life, mate!</p>
+            <img src="/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/images/anarchy.png" alt="Anarchy in the UK">
+            <h4>Hey! Ho!</h4>
+            <button type="button" class="btn btn-success deal" id="startGame">Let's Go!</button>
+        </div>
+        
+        
         <div id="game">
             
             <div class="row">
@@ -43,7 +57,7 @@
                 </div>
             </div>
             
-            <div class="row">
+            <div class="row game-buttons">
                 <div id="actionBar">
                     <h3><span id="turn">Let's get started!</span></h3>
                     <button type="button" class="btn btn-success deal">Deal</button>

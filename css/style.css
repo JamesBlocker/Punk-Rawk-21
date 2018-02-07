@@ -7,8 +7,41 @@ body{
     min-width: 500px;
 }
 
+p {
+    font-family: 'Slabo 27px', serif;
+}
+
+strong {
+    font-size: 20px;
+}
+
+h1 {
+    font-family: 'Acme', sans-serif;
+    font-size: 75px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-family: 'Nanum Brush Script', cursive;
+    color: red;
+    margin-top: 5px;
+    font-size: 55px;
+}
+
 h3 {
+    font-family: 'Acme', sans-serif;
     color: antiquewhite;
+    /* margin-top: 10px; */
+}
+
+h4 {
+    margin-top: 20px;
+}
+
+#opener {
+    color: antiquewhite;
+    text-align: center;
+    width: 500px;
 }
 
 img {

@@ -1,4 +1,4 @@
-// opener
+// opener page and game start
 $('#game').hide();
 $('#actionBar').hide();
 $('#startGame').on('click', startGame);

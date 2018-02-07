@@ -217,6 +217,7 @@ function dealCards() {
     addCardToPlayer(); //p2
     player1Turn = 1;
     player2Turn = 0;
+    $('#turn').text("Player 1's turn");
 }
 
 // new round
@@ -236,7 +237,6 @@ function newRound() {
     dealer.hand = [];
     var handImages = newHand(dealer);
     $('#dealerHand').html(handImages);
-    
 }
 
 function dealerTurn() {

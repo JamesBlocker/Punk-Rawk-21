@@ -1,6 +1,7 @@
 //starting conditions
 $('.hit').hide();
 $('.stand').hide();
+$('.new').hide();
 
 // deck 1
 var deck1 = deck();
@@ -10,14 +11,16 @@ var player1Turn = 0;
 var player1 = {
     name: 'Johnny Rotten',
     hand: [],
-    score: 0
+    score: 0,
+    wins: 0
 };
 
 var player2Turn = 0;
 var player2 = {
     name: 'Sid Vicious',
     hand: [],
-    score: 0
+    score: 0,
+    wins: 0
 };
 
 //dealer
@@ -99,13 +102,28 @@ function shuffle (array) {
     }
 };
 
-// HIT - Deal card to player
+// HIT - give card to player
 $('.hit').on('click', addCardToPlayer);
 
 function displayHand(playerInput) {
     var imageStr = '';
     if(playerInput === dealer) {
         imageStr = '<img src="images/red_back.png" />';
+        for (var i = 1; i < playerInput.hand.length; i ++) {
+            imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
+        }
+    } else {
+        for (var i = 0; i < playerInput.hand.length; i ++) {
+            imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
+        }
+    }
+    return imageStr;
+}
+
+function newHand(playerInput) {
+    var imageStr = '';
+    if(playerInput === dealer) {
+        imageStr = '';
         for (var i = 1; i < playerInput.hand.length; i ++) {
             imageStr += '<img src="images/' + playerInput.hand[i].face + '.png" />'
         }
@@ -197,6 +215,26 @@ function dealCards() {
     player2Turn = 0;
 }
 
+// new round
+$('.new').on('click', newRound);
+
+function newRound() {
+    $('.hit').hide();
+    $('.stand').hide();
+    $('.new').hide();
+    $('.deal').show();
+    player1.hand = [];
+    var handImages = newHand(player1);
+    $('#player1Hand').html(handImages);
+    player2.hand = [];
+    var handImages = newHand(player2);
+    $('#player2Hand').html(handImages);
+    dealer.hand = [];
+    var handImages = newHand(dealer);
+    $('#dealerHand').html(handImages);
+    
+}
+
 function dealerTurn() {
     console.log('taking dealer turn');
     var tempDealScore = getScore(dealer);
@@ -221,19 +259,43 @@ function dealerTurn() {
     }
 }
 
+function hideButtons(){
+    $('.new').show();
+    $('.hit').hide();
+    $('.stand').hide();
+}
+
 function checkWin(player) {
     var playScore = getScore(player);
     console.log('-----------');
     console.log('play' + playScore);
     var dealScore = getScore(dealer);
     console.log('deal' + dealScore);
-    if (playScore === dealScore && dealScore <= 21) {
+    if (playScore === dealScore && dealScore <= 21 || playScore > 21 && dealScore > 21) {
         alert(player.name + " pushes");
+        hideButtons();
     } else if (playScore > dealScore && playScore <= 21) {
         alert(player.name + " wins!");
+        player.wins += 1;
+        updateWins(player);
+        hideButtons();
     } else if (dealScore > 21 && playScore <= 21) {
-        alert(player.name + " wins!");        
+        alert(player.name + " wins!"); 
+        player.wins += 1;
+        updateWins(player);
+        hideButtons();
     } else {
         alert(player.name + ' loses to the house this time');
+        player.wins -= 1;
+        updateWins(player);
+        hideButtons();
+    }
+}
+
+function updateWins(player) {
+    if (player === player1) {
+        $('#wins1').text(player1.wins);
+    } else if (player === player2) {
+        $('#wins2').text(player2.wins);
     }
 }

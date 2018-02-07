@@ -150,9 +150,11 @@ function addCardToPlayer() {
         if (newScore > 21) {
             audioGlass.play();
             // alert('Johnny BUSTS');
-            jBust();
             player1Turn = 0;
             player2Turn = 1;
+            $('#turn').text("Sid's turn");
+            jBust();
+            
         }
     } else if (player2Turn){
         player2.hand.push(cardPulled);
@@ -161,18 +163,19 @@ function addCardToPlayer() {
         var newScore = getScore(player2);
         if (newScore > 21) {
             audioGlass.play();
-            alert('Sid BUSTS');
+            //alert('Sid BUSTS');
+            sBust();
             player2Turn = 0;
-            dealerTurn();
+            $('#turn').text("");
+            setTimeout(function(){
+                dealerTurn();            
+            }, 1000);
         }
     } else {
         dealer.hand.push(cardPulled);
         var handImages = displayHand(dealer);
         $('#dealerHand').html(handImages); 
         var newScore = getScore(player1);
-        // if (newScore > 21) {
-        //     alert('BUST');
-        // }
     }
 }
 
@@ -194,6 +197,7 @@ function stand() {
         console.log("player 1: " + player2.score);
         console.log('dealers turn');
         $('#turn').text('');
+        
         
         dealerTurn();
 
@@ -258,14 +262,18 @@ function dealerTurn() {
     console.log("deal: " + tempDealScore);
 
     if (tempDealScore <= 16) {
-        addCardToPlayer();
-        dealerTurn();
+        setTimeout(function(){
+            addCardToPlayer();
+            dealerTurn();            
+        }, 1000);
     } else if (tempDealScore > 21) {
-        alert('The dealer busts');
+        //alert('The dealer busts');
+        dBust();
         checkWin(player1);
         checkWin(player2);
     }else {
-        alert('The dealer stays');
+        //alert('The dealer stays');
+        dStays();
         checkWin(player1);
         checkWin(player2);
     }
@@ -284,20 +292,20 @@ function checkWin(player) {
     var dealScore = getScore(dealer);
     console.log('deal' + dealScore);
     if (playScore === dealScore && dealScore <= 21 || playScore > 21 && dealScore > 21) {
-        alert(player.name + " pushes");
+        //alert(player.name + " pushes");
         hideButtons();
     } else if (playScore > dealScore && playScore <= 21) {
-        alert(player.name + " wins!");
+        //alert(player.name + " wins!");
         player.wins += 1;
         updateWins(player);
         hideButtons();
     } else if (dealScore > 21 && playScore <= 21) {
-        alert(player.name + " wins!"); 
+        //alert(player.name + " wins!"); 
         player.wins += 1;
         updateWins(player);
         hideButtons();
     } else {
-        alert(player.name + ' loses to the house this time');
+        //alert(player.name + ' loses to the house this time');
         player.wins -= 1;
         updateWins(player);
         hideButtons();
@@ -313,21 +321,53 @@ function updateWins(player) {
 }
 
 //alerts
-function jBust() {
+function gameHide() {
     $('#game').hide();
     $('#actionBar').hide();
-    $('#alertJBust').show();
-    setTimeout(function(){
-        showGame();
-    }, 2000);
 }
 
 function hideAlerts() {
     $('#alertJBust').hide();
+    $('#alertSBust').hide();
+    $('#alertDBust').hide();
+    $('#alertDStays').hide();
+       
 }
 
 function showGame() {
     $('#game').show();
     $('#actionBar').show();
     hideAlerts();
+}
+
+function jBust() {
+    gameHide();
+$('#alertJBust').show();
+setTimeout(function(){
+    showGame();
+}, 1000);
+}
+
+function sBust() {
+    gameHide();
+$('#alertSBust').show();
+setTimeout(function(){
+    showGame();
+}, 1000);
+}
+
+function dBust() {
+    gameHide();
+$('#alertDBust').show();
+setTimeout(function(){
+    showGame();
+}, 1000);
+}
+
+function dStays() {
+    gameHide();
+$('#alertDStays').show();
+setTimeout(function(){
+    showGame();
+}, 1000);
 }

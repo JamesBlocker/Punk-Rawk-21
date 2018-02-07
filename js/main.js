@@ -269,13 +269,18 @@ function dealerTurn() {
     } else if (tempDealScore > 21) {
         //alert('The dealer busts');
         dBust();
-        checkWin(player1);
-        checkWin(player2);
+        setTimeout(function(){
+            checkWin(player1);
+            checkWin(player2);
+        }, 1000);
+        
     }else {
         //alert('The dealer stays');
         dStays();
-        checkWin(player1);
-        checkWin(player2);
+        setTimeout(function(){
+            checkWin(player1);
+            checkWin(player2);
+        }, 1000);
     }
 }
 
@@ -293,9 +298,11 @@ function checkWin(player) {
     console.log('deal' + dealScore);
     if (playScore === dealScore && dealScore <= 21 || playScore > 21 && dealScore > 21) {
         //alert(player.name + " pushes");
+        push(player);
         hideButtons();
     } else if (playScore > dealScore && playScore <= 21) {
         //alert(player.name + " wins!");
+        win(player.name);
         player.wins += 1;
         updateWins(player);
         hideButtons();
@@ -331,6 +338,7 @@ function hideAlerts() {
     $('#alertSBust').hide();
     $('#alertDBust').hide();
     $('#alertDStays').hide();
+    $('#winLoss').hide();
        
 }
 
@@ -370,4 +378,23 @@ $('#alertDStays').show();
 setTimeout(function(){
     showGame();
 }, 1000);
+}
+
+function push(player) {
+    gameHide();
+    $('#winLoss').show();
+    $('#winLoss').html('<h2>' + player.name + ' pushes</h2>');
+    setTimeout(function(){
+        showGame();
+    }, 1000);
+}
+
+function win(playerName) {
+    gameHide();
+    $('#winLoss').show();
+    alert('working');
+    $('#winLoss').html('<h2>' + playerName + ' wins!</h2>');
+    setTimeout(function(){
+        showGame();
+    }, 1000);
 }

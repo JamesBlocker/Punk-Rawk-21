@@ -1,5 +1,6 @@
 body{
-    background-color: aqua;
+   background: url(/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/images/hack_back.gif); 
+   background-size: cover;
 }
 
 #game{
@@ -16,7 +17,12 @@ img {
 
 #dealer {
     width: 500px;
+    height: 200px;
     margin: 20px auto;
+}
+
+#playaz {
+    height: 200px;
 }
 
 div h3{

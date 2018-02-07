@@ -179,11 +179,15 @@ function stand() {
         console.log("player 1: " + player1.score);
         console.log('player 2 turn');
         player2Turn = 1;
+        $('#turn').text("Player 2's turn");
+        
     } else if (player2Turn) {
         player2Turn = 0; 
         player2.score = getScore(player2);
         console.log("player 1: " + player2.score);
         console.log('dealers turn');
+        $('#turn').text('');
+        
         dealerTurn();
 
     }

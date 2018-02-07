@@ -308,11 +308,13 @@ function checkWin(player) {
         hideButtons();
     } else if (dealScore > 21 && playScore <= 21) {
         //alert(player.name + " wins!"); 
+        win(player.name);
         player.wins += 1;
         updateWins(player);
         hideButtons();
     } else {
         //alert(player.name + ' loses to the house this time');
+        loss(player.name);
         player.wins -= 1;
         updateWins(player);
         hideButtons();
@@ -392,8 +394,18 @@ function push(player) {
 function win(playerName) {
     gameHide();
     $('#winLoss').show();
-    alert('working');
+    // alert('working');
     $('#winLoss').html('<h2>' + playerName + ' wins!</h2>');
+    setTimeout(function(){
+        showGame();
+    }, 1000);
+}
+
+function loss(playerName) {
+    gameHide();
+    $('#winLoss').show();
+    // alert('working');
+    $('#winLoss').html('<h2>' + playerName + ' losses!</h2>');
     setTimeout(function(){
         showGame();
     }, 1000);

@@ -1,6 +1,7 @@
 // opener page and game start
 $('#game').hide();
 $('#actionBar').hide();
+hideAlerts();
 $('#startGame').on('click', startGame);
 
 var audioGlass = new Audio('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/glass.wav');
@@ -148,7 +149,8 @@ function addCardToPlayer() {
         var newScore = getScore(player1);
         if (newScore > 21) {
             audioGlass.play();
-            alert('Johnny BUSTS');
+            // alert('Johnny BUSTS');
+            jBust();
             player1Turn = 0;
             player2Turn = 1;
         }
@@ -308,4 +310,24 @@ function updateWins(player) {
     } else if (player === player2) {
         $('#wins2').text(player2.wins);
     }
+}
+
+//alerts
+function jBust() {
+    $('#game').hide();
+    $('#actionBar').hide();
+    $('#alertJBust').show();
+    setTimeout(function(){
+        showGame();
+    }, 2000);
+}
+
+function hideAlerts() {
+    $('#alertJBust').hide();
+}
+
+function showGame() {
+    $('#game').show();
+    $('#actionBar').show();
+    hideAlerts();
 }

@@ -11,7 +11,6 @@ var audioChord2 = new Audio ('audio/chord2.wav');
 var audioDbleChord = new Audio('audio/doubleChord.mp3');
 
 function startGame() {
-    
     $('#opener').hide();
     $('#game').show();
     $('#actionBar').show();
@@ -152,12 +151,10 @@ function addCardToPlayer() {
         var newScore = getScore(player1);
         if (newScore > 21) {
             audioGlass.play();
-            // alert('Johnny BUSTS');
+            jBust();
             player1Turn = 0;
             player2Turn = 1;
-            $('#turn').text("Sid's turn");
-            jBust();
-            
+            $('#turn').text("Sid's turn");  
         }
     } else if (player2Turn){
         player2.hand.push(cardPulled);
@@ -166,7 +163,6 @@ function addCardToPlayer() {
         var newScore = getScore(player2);
         if (newScore > 21) {
             audioGlass.play();
-            //alert('Sid BUSTS');
             sBust();
             player2Turn = 0;
             $('#turn').text("");
@@ -206,7 +202,6 @@ function stand() {
 }
 
 // Deal
-
 $('.deal').on('click', dealCards);
 
 function dealCards() {
@@ -253,10 +248,10 @@ function newRound() {
     $('#player2Hand').html(handImages);
     dealer.hand = [];
     var handImages = newHand(dealer);
-    $('#dealerHand').html(handImages);
-    
+    $('#dealerHand').html(handImages);   
 }
 
+//dealer turn and AI
 function dealerTurn() {
     console.log('taking dealer turn');
     var tempDealScore = getScore(dealer);
@@ -273,14 +268,12 @@ function dealerTurn() {
             dealerTurn();            
         }, 1000);
     } else if (tempDealScore > 21) {
-        //alert('The dealer busts');
         audioChord1.play();
         dBust();
         setTimeout(function(){
             checkWin(player1);
             checkWin(player2);
-        }, 1000);
-        
+            }, 1000);    
     }else {
         //alert('The dealer stays');
         audioChord2.play();
@@ -288,7 +281,7 @@ function dealerTurn() {
         setTimeout(function(){
             checkWin(player1);
             checkWin(player2);
-        }, 1000);
+            }, 1000);
     }
 }
 
@@ -304,24 +297,24 @@ function checkWin(player) {
     console.log('play' + playScore);
     var dealScore = getScore(dealer);
     console.log('deal' + dealScore);
+//player pushes
     if (playScore === dealScore && dealScore <= 21 || playScore > 21 && dealScore > 21) {
-        //alert(player.name + " pushes");
         push(player.name);
         hideButtons();
+//player wins - better score
     } else if (playScore > dealScore && playScore <= 21) {
-        //alert(player.name + " wins!");
         win(player.name);
         player.wins += 1;
         updateWins(player);
         hideButtons();
+//player wins - dealer bust player under 21
     } else if (dealScore > 21 && playScore <= 21) {
-        //alert(player.name + " wins!"); 
         win(player.name);
         player.wins += 1;
         updateWins(player);
         hideButtons();
+//player loses
     } else {
-        //alert(player.name + ' loses to the house this time');
         loss(player.name);
         player.wins -= 1;
         updateWins(player);
@@ -337,7 +330,7 @@ function updateWins(player) {
     }
 }
 
-//alerts
+//game alerts and functions
 function gameHide() {
     $('#game').hide();
     $('#actionBar').hide();
@@ -364,7 +357,7 @@ function jBust() {
 $('#alertJBust').show();
 setTimeout(function(){
     showGame();
-}, 1000);
+    }, 1000);
 }
 
 function sBust() {
@@ -372,7 +365,7 @@ function sBust() {
 $('#alertSBust').show();
 setTimeout(function(){
     showGame();
-}, 1000);
+    }, 1000);
 }
 
 function dBust() {
@@ -380,7 +373,7 @@ function dBust() {
 $('#alertDBust').show();
 setTimeout(function(){
     showGame();
-}, 1000);
+    }, 1000);
 }
 
 function dStays() {
@@ -388,9 +381,10 @@ function dStays() {
 $('#alertDStays').show();
 setTimeout(function(){
     showGame();
-}, 1000);
+    }, 1000);
 }
 
+//outcome results
 function push(playerName) {
     gameHide();
     $('#winLoss1').show();
@@ -404,7 +398,7 @@ function push(playerName) {
     }
     setTimeout(function(){
         showGame();
-    }, 1000);
+        }, 1000);
 }
 
 function win(playerName) {
@@ -419,7 +413,7 @@ function win(playerName) {
     }
     setTimeout(function(){
         showGame();
-    }, 1000);
+        }, 1000);
 }
 
 function loss(playerName) {
@@ -434,5 +428,5 @@ function loss(playerName) {
     }
     setTimeout(function(){
         showGame();
-    }, 1000);
+        }, 1000);
 }

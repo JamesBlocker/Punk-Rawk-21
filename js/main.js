@@ -4,11 +4,11 @@ $('#actionBar').hide();
 hideAlerts();
 $('#startGame').on('click', startGame);
 
-var audioGlass = new Audio('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/glass.wav');
-var audioOi = new Audio ('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/oi.wav');
-var audioChord1 = new Audio ('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/chord1.flac');
-var audioChord2 = new Audio ('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/chord2.wav');
-var audioDbleChord = new Audio('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/doubleChord.mp3');
+var audioGlass = new Audio('audio/glass.wav');
+var audioOi = new Audio ('audio/oi.wav');
+var audioChord1 = new Audio ('audio/chord1.flac');
+var audioChord2 = new Audio ('audio/chord2.wav');
+var audioDbleChord = new Audio('audio/doubleChord.mp3');
 
 function startGame() {
     

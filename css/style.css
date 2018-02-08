@@ -1,5 +1,5 @@
 body{
-   background: url(/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/images/hack_back.gif); 
+   background: url("../images/hack_back.gif"); 
    background-size: cover;
 }
 

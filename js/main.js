@@ -214,21 +214,37 @@ function dealCards() {
     $('.deal').hide();
     shuffle(deck1);
     addCardToPlayer(); //dealer
-    player1Turn = 1;
-    addCardToPlayer(); //p1
-    player1Turn = 0;
-    player2Turn = 1;
-    addCardToPlayer(); //p2
-    player2Turn = 0;
+    // player1Turn = 1;
+    // addCardToPlayer(); //p1
+    // player1Turn = 0;
+    p1Deal();
+    // player2Turn = 1;
+    // addCardToPlayer(); //p2
+    // player2Turn = 0;
+    p2Deal();
     addCardToPlayer() //dealer
+    // player1Turn = 1;
+    // addCardToPlayer(); //p1
+    // player1Turn = 0;
+    p1Deal();
+    // player2Turn = 1;
+    // addCardToPlayer(); //p2
+    // player2Turn = 0;
+    p2Deal();
+    player1Turn = 1;
+    $('#turn').text("Johnny's turn");
+}
+
+function p1Deal() {
     player1Turn = 1;
     addCardToPlayer(); //p1
     player1Turn = 0;
+}
+
+function p2Deal() {
     player2Turn = 1;
     addCardToPlayer(); //p2
-    player1Turn = 1;
     player2Turn = 0;
-    $('#turn').text("Johnny's turn");
 }
 
 // new round

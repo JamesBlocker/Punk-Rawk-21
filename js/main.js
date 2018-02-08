@@ -6,9 +6,12 @@ $('#startGame').on('click', startGame);
 
 var audioGlass = new Audio('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/glass.wav');
 var audioOi = new Audio ('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/oi.wav');
+var audioChord1 = new Audio ('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/chord1.flac');
+var audioChord2 = new Audio ('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/chord2.wav');
+var audioDbleChord = new Audio('/Users/Ella/Desktop/wdi-56/w3/blackjack/casino-project-wdi-w3/audio/doubleChord.mp3');
 
 function startGame() {
-    audioOi.play();
+    
     $('#opener').hide();
     $('#game').show();
     $('#actionBar').show();
@@ -209,6 +212,7 @@ function stand() {
 $('.deal').on('click', dealCards);
 
 function dealCards() {
+    audioDbleChord.play();
     $('.hit').show();
     $('.stand').show();
     $('.deal').hide();
@@ -235,6 +239,7 @@ function dealCards() {
 $('.new').on('click', newRound);
 
 function newRound() {
+    audioOi.play();
     $('.hit').hide();
     $('.stand').hide();
     $('.new').hide();
@@ -268,6 +273,7 @@ function dealerTurn() {
         }, 1000);
     } else if (tempDealScore > 21) {
         //alert('The dealer busts');
+        audioChord1.play();
         dBust();
         setTimeout(function(){
             checkWin(player1);
@@ -276,6 +282,7 @@ function dealerTurn() {
         
     }else {
         //alert('The dealer stays');
+        audioChord2.play();
         dStays();
         setTimeout(function(){
             checkWin(player1);

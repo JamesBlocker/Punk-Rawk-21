@@ -83,3 +83,6 @@ div h3{
     width: 300px;
 }
 
+audio {
+    float: right;
+}

@@ -17,8 +17,7 @@ function startGame() {
 }
 
 //starting conditions
-$('.hit').hide();
-$('.stand').hide();
+hitStandHide();
 $('.new').hide();
 
 // deck 1
@@ -209,17 +208,10 @@ function dealCards() {
         deck1 = deck();
     }
     audioDbleChord.play();
-    $('.hit').show();
-    $('.stand').show();
+    hitStandShow();
     $('.deal').hide();
     shuffle(deck1);
-    // addCardToPlayer(); //dealer
-    // p1Deal();
-    // p2Deal();
     fullTableDeal();
-    // addCardToPlayer() //dealer
-    // p1Deal();
-    // p2Deal();
     fullTableDeal();
     player1Turn = 1;
     $('#turn').text("Johnny's turn");
@@ -248,8 +240,7 @@ $('.new').on('click', newRound);
 
 function newRound() {
     audioOi.play();
-    $('.hit').hide();
-    $('.stand').hide();
+    hitStandHide();
     $('.new').hide();
     $('.deal').show();
     player1.hand = [];
@@ -285,7 +276,7 @@ function dealerTurn() {
         setTimeout(function(){
             checkWin(player1);
             checkWin(player2);
-            }, 1000);    
+        }, 1000);    
     }else {
         //alert('The dealer stays');
         audioChord2.play();
@@ -293,14 +284,13 @@ function dealerTurn() {
         setTimeout(function(){
             checkWin(player1);
             checkWin(player2);
-            }, 1000);
+        }, 1000);
     }
 }
 
 function hideButtons(){
     $('.new').show();
-    $('.hit').hide();
-    $('.stand').hide();
+    hitStandHide();
 }
 
 function checkWin(player) {
@@ -319,7 +309,7 @@ function checkWin(player) {
         player.wins += 1;
         updateWins(player);
         hideButtons();
-//player wins - dealer bust player under 21
+//player wins - dealer bust/player <= 21
     } else if (dealScore > 21 && playScore <= 21) {
         win(player.name);
         player.wins += 1;
@@ -354,8 +344,7 @@ function hideAlerts() {
     $('#alertDBust').hide();
     $('#alertDStays').hide();
     $('#winLoss1').hide();
-    $('#winLoss2').hide();
-       
+    $('#winLoss2').hide();   
 }
 
 function showGame() {
@@ -366,33 +355,33 @@ function showGame() {
 
 function jBust() {
     gameHide();
-$('#alertJBust').show();
-setTimeout(function(){
-    showGame();
+    $('#alertJBust').show();
+    setTimeout(function(){
+        showGame();
     }, 1000);
 }
 
 function sBust() {
     gameHide();
-$('#alertSBust').show();
-setTimeout(function(){
-    showGame();
+    $('#alertSBust').show();
+    setTimeout(function(){
+        showGame();
     }, 1000);
 }
 
 function dBust() {
     gameHide();
-$('#alertDBust').show();
-setTimeout(function(){
-    showGame();
+    $('#alertDBust').show();
+    setTimeout(function(){
+        showGame();
     }, 1000);
 }
 
 function dStays() {
     gameHide();
-$('#alertDStays').show();
-setTimeout(function(){
-    showGame();
+    $('#alertDStays').show();
+    setTimeout(function(){
+        showGame();
     }, 1000);
 }
 
@@ -410,7 +399,7 @@ function push(playerName) {
     }
     setTimeout(function(){
         showGame();
-        }, 1000);
+    }, 1000);
 }
 
 function win(playerName) {
@@ -425,7 +414,7 @@ function win(playerName) {
     }
     setTimeout(function(){
         showGame();
-        }, 1000);
+    }, 1000);
 }
 
 function loss(playerName) {
@@ -440,5 +429,15 @@ function loss(playerName) {
     }
     setTimeout(function(){
         showGame();
-        }, 1000);
+    }, 1000);
 }
+
+function hitStandHide() {
+    $('.hit').hide();
+    $('.stand').hide();
+}
+
+function hitStandShow() {
+    $('.hit').show();
+    $('.stand').show();
+};

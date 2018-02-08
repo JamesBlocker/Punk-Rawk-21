@@ -340,7 +340,8 @@ function hideAlerts() {
     $('#alertSBust').hide();
     $('#alertDBust').hide();
     $('#alertDStays').hide();
-    $('#winLoss').hide();
+    $('#winLoss1').hide();
+    $('#winLoss2').hide();
        
 }
 
@@ -382,10 +383,17 @@ setTimeout(function(){
 }, 1000);
 }
 
-function push(player) {
+function push(playerName) {
     gameHide();
-    $('#winLoss').show();
-    $('#winLoss').html('<h2>' + player.name + ' pushes</h2>');
+    $('#winLoss1').show();
+    $('#winLoss2').show();
+    console.log('+++push' + playerName);   
+     
+    if (playerName === 'Johnny Rotten') {
+        $('#winLoss1').html('<h2>' + playerName + ' wins!</h2>');
+    } else if (playerName === 'Sid Vicious') {
+        $('#winLoss2').html('<h2>' + playerName + ' wins!</h2>');
+    }
     setTimeout(function(){
         showGame();
     }, 1000);
@@ -393,9 +401,16 @@ function push(player) {
 
 function win(playerName) {
     gameHide();
-    $('#winLoss').show();
+    $('#winLoss1').show();
+    $('#winLoss2').show();
+    
+    console.log('+++win' + playerName);
     // alert('working');
-    $('#winLoss').html('<h2>' + playerName + ' wins!</h2>');
+    if (playerName === 'Johnny Rotten') {
+        $('#winLoss1').html('<h2>' + playerName + ' wins!</h2>');
+    } else if (playerName === 'Sid Vicious') {
+        $('#winLoss2').html('<h2>' + playerName + ' wins!</h2>');
+    }
     setTimeout(function(){
         showGame();
     }, 1000);
@@ -403,9 +418,17 @@ function win(playerName) {
 
 function loss(playerName) {
     gameHide();
-    $('#winLoss').show();
+    $('#winLoss1').show();
+    $('#winLoss2').show();
+    
+    console.log('+++loss' + playerName);
+    
     // alert('working');
-    $('#winLoss').html('<h2>' + playerName + ' losses!</h2>');
+    if (playerName === 'Johnny Rotten') {
+        $('#winLoss1').html('<h2>' + playerName + ' wins!</h2>');
+    } else if (playerName === 'Sid Vicious') {
+        $('#winLoss2').html('<h2>' + playerName + ' wins!</h2>');
+    }
     setTimeout(function(){
         showGame();
     }, 1000);

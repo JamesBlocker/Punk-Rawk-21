@@ -298,7 +298,7 @@ function checkWin(player) {
     console.log('deal' + dealScore);
     if (playScore === dealScore && dealScore <= 21 || playScore > 21 && dealScore > 21) {
         //alert(player.name + " pushes");
-        push(player);
+        push(player.name);
         hideButtons();
     } else if (playScore > dealScore && playScore <= 21) {
         //alert(player.name + " wins!");
@@ -390,9 +390,9 @@ function push(playerName) {
     console.log('+++push' + playerName);   
      
     if (playerName === 'Johnny Rotten') {
-        $('#winLoss1').html('<h2>' + playerName + ' wins!</h2>');
+        $('#winLoss1').html('<h2>' + playerName + ' pushes!</h2>');
     } else if (playerName === 'Sid Vicious') {
-        $('#winLoss2').html('<h2>' + playerName + ' wins!</h2>');
+        $('#winLoss2').html('<h2>' + playerName + ' pushes!</h2>');
     }
     setTimeout(function(){
         showGame();
@@ -403,9 +403,7 @@ function win(playerName) {
     gameHide();
     $('#winLoss1').show();
     $('#winLoss2').show();
-    
     console.log('+++win' + playerName);
-    // alert('working');
     if (playerName === 'Johnny Rotten') {
         $('#winLoss1').html('<h2>' + playerName + ' wins!</h2>');
     } else if (playerName === 'Sid Vicious') {
@@ -420,14 +418,11 @@ function loss(playerName) {
     gameHide();
     $('#winLoss1').show();
     $('#winLoss2').show();
-    
     console.log('+++loss' + playerName);
-    
-    // alert('working');
     if (playerName === 'Johnny Rotten') {
-        $('#winLoss1').html('<h2>' + playerName + ' wins!</h2>');
+        $('#winLoss1').html('<h2>' + playerName + ' loses!</h2>');
     } else if (playerName === 'Sid Vicious') {
-        $('#winLoss2').html('<h2>' + playerName + ' wins!</h2>');
+        $('#winLoss2').html('<h2>' + playerName + ' loses!</h2>');
     }
     setTimeout(function(){
         showGame();

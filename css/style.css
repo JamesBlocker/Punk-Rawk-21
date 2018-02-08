@@ -1,18 +1,11 @@
+/* Tags */
+audio {
+    float: right;
+}
+
 body{
    background: url("../images/hack_back.gif"); 
    background-size: cover;
-}
-
-#game{
-    min-width: 500px;
-}
-
-p {
-    font-family: 'Slabo 27px', serif;
-}
-
-strong {
-    font-size: 20px;
 }
 
 h1 {
@@ -38,18 +31,32 @@ h4 {
     margin-top: 20px;
 }
 
-#opener {
-    color: antiquewhite;
-    text-align: center;
-    width: 500px;
+img {
+    height: 150px;
 }
 
-img {
+p {
+    font-family: 'Slabo 27px', serif;
+}
+
+strong {
+    font-size: 20px;
+}
+
+/* Classes */
+.cardPlaceHolder {
+    width: 100px;
+    margin: 0 auto;
     height: 150px;
 }
 
 .row {
     width: 100%;
+}
+
+#actionBar {
+    margin: 20px auto;
+    width: 300px;
 }
 
 #dealer {
@@ -58,31 +65,17 @@ img {
     margin: 20px auto;
 }
 
+/* IDs */
+#game{
+    min-width: 500px;
+}
+
+#opener {
+    color: antiquewhite;
+    text-align: center;
+    width: 500px;
+}
+
 #playaz {
     height: 200px;
-}
-
-div h3{
-    /* width: 100px;
-    margin: 0 auto; */
-    /* text-align: center; */
-}
-
-.cardPlaceHolder {
-    width: 100px;
-    margin: 0 auto;
-    /* border: 1px dashed green; */
-    height: 150px;
-   
-    /* display: inline-block;
-    float: left; */
-}
-
-#actionBar {
-    margin: 20px auto;
-    width: 300px;
-}
-
-audio {
-    float: right;
 }

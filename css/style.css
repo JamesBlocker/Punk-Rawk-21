@@ -44,10 +44,19 @@ strong {
 }
 
 /* Classes */
+.alert{
+    width: 500px;
+    margin: 30px auto;
+}
+
 .cardPlaceHolder {
     width: 100px;
     margin: 0 auto;
     height: 150px;
+}
+
+.container {
+    margin-left: 50px;
 }
 
 .row {
@@ -73,7 +82,7 @@ strong {
 #opener {
     color: antiquewhite;
     text-align: center;
-    width: 500px;
+    width: 700px;
 }
 
 #playaz {

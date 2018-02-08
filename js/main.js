@@ -201,9 +201,7 @@ function stand() {
         console.log('dealers turn');
         $('#turn').text('');
         
-        
         dealerTurn();
-
     }
 }
 
@@ -212,6 +210,9 @@ function stand() {
 $('.deal').on('click', dealCards);
 
 function dealCards() {
+    if (deck1.length < 20) {
+        deck1 = deck();
+    }
     audioDbleChord.play();
     $('.hit').show();
     $('.stand').show();

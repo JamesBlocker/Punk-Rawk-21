@@ -213,24 +213,14 @@ function dealCards() {
     $('.stand').show();
     $('.deal').hide();
     shuffle(deck1);
-    addCardToPlayer(); //dealer
-    // player1Turn = 1;
-    // addCardToPlayer(); //p1
-    // player1Turn = 0;
-    p1Deal();
-    // player2Turn = 1;
-    // addCardToPlayer(); //p2
-    // player2Turn = 0;
-    p2Deal();
-    addCardToPlayer() //dealer
-    // player1Turn = 1;
-    // addCardToPlayer(); //p1
-    // player1Turn = 0;
-    p1Deal();
-    // player2Turn = 1;
-    // addCardToPlayer(); //p2
-    // player2Turn = 0;
-    p2Deal();
+    // addCardToPlayer(); //dealer
+    // p1Deal();
+    // p2Deal();
+    fullTableDeal();
+    // addCardToPlayer() //dealer
+    // p1Deal();
+    // p2Deal();
+    fullTableDeal();
     player1Turn = 1;
     $('#turn').text("Johnny's turn");
 }
@@ -245,6 +235,12 @@ function p2Deal() {
     player2Turn = 1;
     addCardToPlayer(); //p2
     player2Turn = 0;
+}
+
+function fullTableDeal() {
+    addCardToPlayer(); //dealer
+    p1Deal();
+    p2Deal();
 }
 
 // new round
